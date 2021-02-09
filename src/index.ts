@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDb from './db/connect';
 import cors from 'cors';
+import UserRoutes from './routes/users'
 const main = async () => {
     const app = express();
     const port = process.env.PORT || '4000';
@@ -13,7 +14,7 @@ const main = async () => {
         return res.send('API Running');
     });
      //  Define Routes
-
+    app.use('/api/users',UserRoutes);
      app.listen(port, () => {
         console.log(`🚀 Server ready at http://localhost:${port}`);
     });
