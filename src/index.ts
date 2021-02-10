@@ -8,11 +8,9 @@ const main = async () => {
     connectDb();
     app.use(cors());
     //  Welcome Message
-    app.get('/', (req, res) => {
-        console.log(req);
+    app.use('/favicon.ico', express.static('public/favicon.svg'));
+    app.use('/', express.static('public'));
 
-        return res.send('API Running');
-    });
      //  Define Routes
     app.use('/api/users',UserRoutes);
      app.listen(port, () => {

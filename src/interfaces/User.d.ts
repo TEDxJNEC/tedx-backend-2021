@@ -9,7 +9,7 @@ interface IUser extends Document {
     createdAt:Date;
     updatedAt:Date;
     token:string;
-    profile_uri:string;
+    profile_uri:string; 
 }
 
 export default IUser;
