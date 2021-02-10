@@ -8,6 +8,8 @@ interface IAmbassador extends Document {
   college:string;
   branch:string;
   year:string;
+  conversions:number;
+  reach:number;
 }
 
 export default IUser;
