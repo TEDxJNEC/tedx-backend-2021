@@ -13,7 +13,9 @@ export const getGToken = async (code:string)=>{
                 code,
             }
         });
-        return data.acess_token;
+        console.log(data);
+        
+        return data.access_token;
     } catch (error) {
         console.log(error);
         return error;

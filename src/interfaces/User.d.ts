@@ -1,7 +1,7 @@
-import {Document} from 'mongoose';
-interface IUser extends Document {
+import {Document,Model} from 'mongoose';
+import ITicket from './Ticket'
+export interface IUser {
     email: string;
-    password:string;
     ticketId:string;
     name:string;
     address:string;
@@ -12,4 +12,10 @@ interface IUser extends Document {
     profile_uri:string; 
 }
 
-export default IUser;
+interface IUserBaseDocument extends IUser,Document{
+    ticketId:ITicket['uuid']
+}
+export interface IUserModel extends Model<IUserBaseDocument>{
+
+}
+export default IUserBaseDocument;

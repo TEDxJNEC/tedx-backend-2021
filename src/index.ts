@@ -7,6 +7,8 @@ const main = async () => {
     const port = process.env.PORT || '4000';
     connectDb();
     app.use(cors());
+        // @ts-ignore
+        app.use(express.json({ extended: false }));
     //  Welcome Message
     app.use('/favicon.ico', express.static('public/favicon.svg'));
     app.use('/', express.static('public'));
