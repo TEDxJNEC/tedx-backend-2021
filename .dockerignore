@@ -1,0 +1,10 @@
+# Project ignores
+.vscode
+
+# Dependency directories
+node_modules/
+
+# Node Version Manager
+.nvmrc
+
+npm-debug.log
