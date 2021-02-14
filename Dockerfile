@@ -1,4 +1,4 @@
-FROM node:12.18-alpine3.12
+FROM node:12 as build
 
 WORKDIR /usr/src/app
 
@@ -8,12 +8,16 @@ COPY yarn.lock ./
 RUN yarn
 
 COPY ./ ./
-COPY .env .env
 
 RUN yarn build
+
+FROM gcr.io/distroless/nodejs:12
+
+COPY --from=build /usr/src/app /usr/src/app
+WORKDIR /usr/src/app
 
 ENV NODE_ENV production
 
 EXPOSE 4000
-CMD [ "node", "dist/index.js" ]
-USER node
+CMD [ "dist/index.js" ]
+USER 1000

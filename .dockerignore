@@ -8,3 +8,5 @@ node_modules/
 .nvmrc
 
 npm-debug.log
+
+.env
