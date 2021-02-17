@@ -9,7 +9,7 @@ export const getGToken = async (code:string)=>{
                 client_id:process.env.GOOGLE_CLIENT_ID,
                 client_secret:process.env.GOOGLE_CLIENT_SECRET,
                 redirect_uri:process.env.GOOGLE_REDIRECT_URI,
-                grant_type: 'authorization_code',
+                grant_type: "authorization_code",
                 code,
             }
         });
