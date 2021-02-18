@@ -22,7 +22,28 @@ const UserSchema = new Schema<IUserDocument,IUserModel>({
     address:{
         type:String
     },
+    occupation:{
+        type:String
+    },
+    occupationDescription:{
+        type:String
+    },
     token:{
+        type:String
+    },
+    age:{
+        type:Number
+    },
+    judgingParameters:{
+        type:String
+    },
+    medium:{
+        type:String
+    },
+    bestSkill:{
+        type:String 
+    },
+    aid:{
         type:String
     }
 },{timestamps:true})

@@ -10,6 +10,14 @@ export interface IUser {
     updatedAt:Date;
     token:string;
     profile_uri:string; 
+    age:number;
+    occupation:string;
+    occupationDescription:string;
+    judgingParameters:string;
+    medium:string;
+    bestSkill:string;
+    aid:string;
+
 }
 
 interface IUserBaseDocument extends IUser,Document{

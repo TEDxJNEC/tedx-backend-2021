@@ -1,7 +1,6 @@
 import express , {Request,Response} from 'express';
 // import {check,validationResult} from 'express-validator';
-import Ambassador from '../models/ambassador';
-import {getGToken,getGoogleUserInfo} from "../controllers/googleAPIFns" 
+import Ambassador from '../models/ambassador'; 
 
 const router= express.Router();
 
@@ -12,7 +11,7 @@ const router= express.Router();
 router.get('/', async(req:Request,res:Response)=>{
     console.log(req);
     try {
-        const ambassadors= Ambassador.find({});
+        const ambassadors= await Ambassador.find({});
         return res.json(ambassadors)
     } catch (error) {
         console.log(error);
@@ -21,18 +20,16 @@ router.get('/', async(req:Request,res:Response)=>{
     
 })
 
-// @route POST api/ambassadors
-// @desc Interacts with Google API to get User data
-// @acess public
 
-router.post('/', async(req:Request,res:Response)=>{
+// @route GET api/ambassadors
+// @desc Gets list of all ambassadors (unsafe should be acessed by admin only)
+// @acess public (TODO: admin)
+
+router.get('/', async(req:Request,res:Response)=>{
     console.log(req);
     try {
-        const {code}= req.body;
-        const token= await getGToken(code)
-        const UserInfo:any= await getGoogleUserInfo(token)
-        console.log(UserInfo);
-        return res.status(200).send(UserInfo)
+        const ambassadors= Ambassador.find({});
+        return res.json(ambassadors)
     } catch (error) {
         console.log(error);
         return res.status(500).send({errors:["Server Error"]}); 

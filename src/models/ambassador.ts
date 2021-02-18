@@ -12,6 +12,7 @@ const AmbassadorSchema = new mongoose.Schema({
     },
     aId:{
         type:String,
+        required:true,
     },
     college:{
         type:String,  
@@ -34,10 +35,11 @@ const AmbassadorSchema = new mongoose.Schema({
 
 },{timestamps:true})
 
-AmbassadorSchema.pre("save", async function (this:IAmbassador,next) {
+AmbassadorSchema.pre('validate', async function (next) {
     if (this.isNew) {
-        const id = makeId(3,'tdx')
-        this.aid=id;
+        const id = makeId(4,'tdx')
+        // @ts-ignore
+        this.aId=id;
         next();
       } else {
         next();

@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 import IAuthMiddlewareRequest from '../interfaces/AuthMiddlewareRequest'
 
 // @ts-ignore
-const AuthMiddleware= (req:IAuthMiddlewareRequest, res:Response, next:NextFunction)=> {
+const AuthMiddleware:any = (req:IAuthMiddlewareRequest, res:Response, next:NextFunction)=> {
   const token = req.header("token");
   if (!token) return res.status(401).json({ message: "Auth Error" });
 

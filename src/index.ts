@@ -2,6 +2,7 @@ import express from 'express';
 import connectDb from './db/connect';
 import cors from 'cors';
 import UserRoutes from './routes/users'
+import AmbassadorRoutes from './routes/ambassadors'
 const main = async () => {
     const app = express();
     const port = process.env.PORT || '4000';
@@ -15,6 +16,7 @@ const main = async () => {
 
      //  Define Routes
     app.use('/api/users',UserRoutes);
+    app.use('/api/ambassadors',AmbassadorRoutes);
      app.listen(port, () => {
         console.log(`🚀 Server ready at http://localhost:${port}`);
     });
