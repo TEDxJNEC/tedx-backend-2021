@@ -54,9 +54,9 @@ router.post('/', async(req:Request,res:Response)=>{
                     return res.status(200).json({
                       token,
                       user:{
-                        email:amb.email,
-                        name:amb.name,
-                        aId:amb.aId
+                        email:amb!.email,
+                        name:amb!.name,
+                        aId:amb!.aId
                       }
                     });
                   }
@@ -205,7 +205,7 @@ try {
   if (!user) {
     return res.status(404).json({ errors: ["User Not Found"] });
   }
-  const {phoneNo,address,occupation,occupationDescription,age,judgingParameters,medium,bestSkill,aid}=req.body;
+  const {phoneNo,address,occupation,occupationDescription,age,judgingParameters,medium,bestSkill,aId}=req.body;
   user!.phoneNo=phoneNo;
   user!.address=address;
   user!.occupation=occupation;
@@ -214,7 +214,14 @@ try {
   user!.judgingParameters=judgingParameters;
   user!.medium=medium
   user!.bestSkill=bestSkill
-  user.aid=aid
+  user.aId=aId
+  if(aId){
+    let referer= await Ambassador.findOne({aId});
+    if (referer){
+      referer!.reach+=1;
+    } 
+    await referer!.save()
+  }
 await user!.save()
 return res.status(200).json({message:"User Registered Successfuly"})
 

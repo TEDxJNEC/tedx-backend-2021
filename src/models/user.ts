@@ -43,7 +43,7 @@ const UserSchema = new Schema<IUserDocument,IUserModel>({
     bestSkill:{
         type:String 
     },
-    aid:{
+    aId:{
         type:String
     }
 },{timestamps:true})

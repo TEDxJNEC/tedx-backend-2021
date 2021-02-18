@@ -16,7 +16,7 @@ export interface IUser {
     judgingParameters:string;
     medium:string;
     bestSkill:string;
-    aid:string;
+    aId:string;
 
 }
 

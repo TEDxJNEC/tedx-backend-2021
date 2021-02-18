@@ -12,4 +12,4 @@ interface IAmbassador extends Document {
   reach:number;
 }
 
-export default IUser;
+export default IAmbassador;
