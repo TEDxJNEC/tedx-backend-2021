@@ -1,6 +1,8 @@
 import express , {Request,Response} from 'express';
 // import {check,validationResult} from 'express-validator';
+import auth from "../middleware/auth";
 import Ambassador from '../models/ambassador'; 
+import IAuthMiddlewareRequest from '../interfaces/AuthMiddlewareRequest'
 
 const router= express.Router();
 
@@ -21,15 +23,22 @@ router.get('/', async(req:Request,res:Response)=>{
 })
 
 
-// @route GET api/ambassadors
-// @desc Gets list of all ambassadors (unsafe should be acessed by admin only)
-// @acess public (TODO: admin)
+// @route GET api/ambassadors/me
+// @desc Gets ambassador info
+// @acess auth
 
-router.get('/', async(req:Request,res:Response)=>{
-    console.log(req);
+// @ts-ignore
+router.get('/me',auth, async(req:IAuthMiddlewareRequest,res:Response)=>{
+    
     try {
-        const ambassadors= Ambassador.find({});
-        return res.json(ambassadors)
+        const email = req.user.email
+        const ambassador= await Ambassador.findOne({email});
+        if (ambassador) {
+            return res.json(ambassador) 
+        } else {
+            return res.status(404).send({errors:["Ambasador does not exits"]})
+        }
+        
     } catch (error) {
         console.log(error);
         return res.status(500).send({errors:["Server Error"]}); 

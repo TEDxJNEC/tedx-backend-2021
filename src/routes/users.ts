@@ -177,7 +177,7 @@ router.get('/me',auth, async(req:IAuthMiddlewareRequest,res:Response)=>{
             return res.status(200).send(user)
         }
         else{
-            return res.status(401).send({errors:["User does not exits"]})
+            return res.status(404).send({errors:["User does not exits"]})
         }
     } catch (error) {
         console.log(error);
