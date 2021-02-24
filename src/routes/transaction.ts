@@ -5,6 +5,7 @@ import Transactions from '../models/transactions';
 import ITransaction from "../interfaces/Transaction"
 import makeId from "../utils";
 import User from '../models/user';
+import auth from "../middleware/auth";
 import Ambassador from '../models/ambassador'; 
 // import IUser from '../interfaces/User';
 // import User from '../models/user';
