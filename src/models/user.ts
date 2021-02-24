@@ -45,6 +45,12 @@ const UserSchema = new Schema<IUserDocument,IUserModel>({
     },
     aId:{
         type:String
+    },
+    ticketsBought:{
+        type:Number
+    },
+    amountPaid:{
+        type:Number
     }
 },{timestamps:true})
 

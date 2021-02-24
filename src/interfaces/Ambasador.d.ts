@@ -10,6 +10,7 @@ interface IAmbassador extends Document {
   year:string;
   conversions:number;
   reach:number;
+  phoneNo:string;
 }
 
 export default IAmbassador;

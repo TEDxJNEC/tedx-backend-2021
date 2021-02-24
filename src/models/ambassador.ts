@@ -30,6 +30,9 @@ const AmbassadorSchema = new mongoose.Schema({
     reach:{
         type:Number,
         default:0
+    },
+    phoneNo:{
+       type:String 
     }
 
 

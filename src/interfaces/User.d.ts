@@ -17,7 +17,8 @@ export interface IUser {
     medium:string;
     bestSkill:string;
     aId:string;
-
+    ticketsBought:number;
+    amountPaid:number;
 }
 
 interface IUserBaseDocument extends IUser,Document{
