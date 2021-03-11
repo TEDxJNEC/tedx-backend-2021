@@ -4,7 +4,6 @@ import IUserDocument,{IUserModel} from "../interfaces/User"
 const UserSchema = new Schema<IUserDocument,IUserModel>({
     name:{
         type:String,
-        required:true
     },
     email:{
         type:String,
